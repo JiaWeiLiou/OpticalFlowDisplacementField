@@ -276,10 +276,10 @@ void colorwheel(Mat &colorwheelImage, int dim)
 			int y = i - (dim - 1) / 2;
 			double rad = sqrt(x * x + y * y);
 			double angle = atan2(-y, -x) / CV_PI;
-			double fk = (angle + 1.0) / 2.0 * (colorwheel.size() - 1);  //計算角度對應之索引位置
-			int k0 = (int)fk;
-			int k1 = (k0 + 1) % colorwheel.size();
-			float f = fk - k0;
+			double fk = (angle + 1.0) / 2.0 * (colorwheel.size() - 1);  //計算角度對應之漸層色的實際索引位置
+			int k0 = (int)fk;											//計算角度對應之漸層色的索引位置下界
+			int k1 = (k0 + 1) % colorwheel.size();						//計算角度對應之漸層色的索引位置上界(if k0=89; k1 =0)
+			float f = fk - k0;											//計算實際索引位置至索引位置下界的距離
 			//f = 0; // uncomment to see original color wheel  
 
 			/*設定半徑內不透明、半徑外透明*/
@@ -292,7 +292,7 @@ void colorwheel(Mat &colorwheelImage, int dim)
 			{
 				float col0 = colorwheel[k0][b] / 255.0;
 				float col1 = colorwheel[k1][b] / 255.0;
-				float col = (1 - f) * col0 + f * col1;
+				float col = (1 - f) * col0 + f * col1;					//漸層色內插
 				if (rad <= (dim - 1) / 2)
 				{
 					col = 1 - (rad / ((dim - 1) / 2)) * (1 - col);		// increase saturation with radius
