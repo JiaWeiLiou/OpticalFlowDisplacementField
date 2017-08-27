@@ -239,13 +239,6 @@ void bgraMergeToBGR(Mat &Image, Mat colorwheelImage, int x, int y)
 
 void makecolorwheel(vector<Scalar> &colorwheel)
 {
-	//int RY = 15;
-	//int YG = 6;
-	//int GC = 4;
-	//int CB = 11;
-	//int BM = 13;
-	//int MR = 6;
-
 	int RY = 15;	//紅色(Red)     至黃色(Yellow)
 	int YG = 15;	//黃色(Yellow)  至綠色(Green)
 	int GC = 15;	//綠色(Green)   至青色(Cyan)
@@ -253,14 +246,12 @@ void makecolorwheel(vector<Scalar> &colorwheel)
 	int BM = 15;	//藍色(Blue)    至洋紅(Magenta)
 	int MR = 15;	//洋紅(Magenta) 至紅色(Red)
 
-	int i;
-
-	for (i = 0; i < RY; i++) colorwheel.push_back(Scalar(255, 255 * i / RY, 0));
-	for (i = 0; i < YG; i++) colorwheel.push_back(Scalar(255 - 255 * i / YG, 255, 0));
-	for (i = 0; i < GC; i++) colorwheel.push_back(Scalar(0, 255, 255 * i / GC));
-	for (i = 0; i < CB; i++) colorwheel.push_back(Scalar(0, 255 - 255 * i / CB, 255));
-	for (i = 0; i < BM; i++) colorwheel.push_back(Scalar(255 * i / BM, 0, 255));
-	for (i = 0; i < MR; i++) colorwheel.push_back(Scalar(255, 0, 255 - 255 * i / MR));
+	for (int i = 0; i < RY; i++) colorwheel.push_back(Scalar(255, 255 * i / RY, 0));
+	for (int i = 0; i < YG; i++) colorwheel.push_back(Scalar(255 - 255 * i / YG, 255, 0));
+	for (int i = 0; i < GC; i++) colorwheel.push_back(Scalar(0, 255, 255 * i / GC));
+	for (int i = 0; i < CB; i++) colorwheel.push_back(Scalar(0, 255 - 255 * i / CB, 255));
+	for (int i = 0; i < BM; i++) colorwheel.push_back(Scalar(255 * i / BM, 0, 255));
+	for (int i = 0; i < MR; i++) colorwheel.push_back(Scalar(255, 0, 255 - 255 * i / MR));
 }
 
 void colorwheel(Mat &colorwheelImage, int dim)
@@ -276,8 +267,6 @@ void colorwheel(Mat &colorwheelImage, int dim)
 	static vector<Scalar> colorwheel; //Scalar r,g,b  
 	if (colorwheel.empty())
 		makecolorwheel(colorwheel);
-
-	Mat location(dim, dim, CV_8UC2);
 
 	for (int i = 0; i < dim - 1; ++i)
 	{
