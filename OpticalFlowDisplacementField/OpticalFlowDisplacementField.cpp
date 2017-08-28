@@ -351,7 +351,7 @@ void drawMunsellColorSystem(Mat flow, Mat &color, double maxrad)
 			int k0 = (int)fk;
 			int k1 = (k0 + 1) % colorwheel.size();
 			float f = fk - k0;
-			f = 0; // uncomment to see original color wheel  
+			//f = 0; // uncomment to see original color wheel  
 
 			for (int b = 0; b < 3; b++)
 			{
