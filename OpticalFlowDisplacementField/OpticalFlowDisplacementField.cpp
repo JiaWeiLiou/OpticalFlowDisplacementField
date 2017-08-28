@@ -122,14 +122,12 @@ int main()
 	string infile_name(infile.substr(pos1 + 1, pos2 - pos1 - 1));
 	outfile = filepath + "\\" + infile_name + "_DisplacementField.avi";
 
-	Mat  newGray_temp, newGray_temp_temp, prevGray, warpFrame, thresholdFrame; //?
-
 	/*獲取第一幀影像*/
 	Mat newFrame;
 	video >> newFrame;
 
 	/*將彩色影像轉換為灰階並設定為第一幀*/
-	Mat newGray;
+	Mat newGray, prevGray;
 	cv::cvtColor(newFrame, newGray, CV_BGR2GRAY);
 	prevGray = newGray.clone();
 
