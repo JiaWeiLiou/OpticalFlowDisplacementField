@@ -150,7 +150,7 @@ int main()
 	std::cout << endl << "Start calculate ..." << endl;
 
 	int frameNum = 1;
-	cout << endl << "No. " << frameNum << "\t";
+	cout << endl << "Frame No. " << frameNum << "\t";
 
 	/*創建輸出影片物件*/
 	VideoWriter writer;
