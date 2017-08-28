@@ -27,8 +27,8 @@ void drawSamplingVectorField(const Mat& flow, Mat& cflowmap, int step, double mf
 
 int main()
 {
-	string infile;
 	std::cout << "Please enter video path : ";
+	string infile;
 	cin >> infile;
 
 	/*確認檔案是否存在*/
